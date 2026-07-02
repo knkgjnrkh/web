@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>刘俊 — 渗透测试工程师</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ======== 导航栏 ======== -->
+  <header class="header" id="header">
+    <div class="container">
+      <span class="header-name">刘俊</span>
+      <span class="header-title">渗透测试工程师</span>
+    </div>
+  </header>
+
+  <!-- ======== 个人介绍区 ======== -->
+  <section class="hero" id="hero">
+    <div class="container">
+      <div class="hero-avatar" id="hero-avatar">
+        <img class="avatar-img" id="avatar-img" src="" alt="头像">
+      </div>
+      <h1 class="hero-name" id="hero-name"></h1>
+      <p class="hero-title" id="hero-title"></p>
+      <p class="hero-bio" id="hero-bio"></p>
+    </div>
+  </section>
+
+  <!-- ======== 技术栈区 ======== -->
+  <section class="skills" id="skills">
+    <div class="container">
+      <h2 class="section-title">🛠️ 技术栈</h2>
+      <div class="skills-tags" id="skills-tags">
+        <!-- JS 动态渲染 -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== 项目展示区 ======== -->
+  <section class="projects" id="projects">
+    <div class="container">
+      <h2 class="section-title">📁 项目展示</h2>
+      <div class="project-list" id="project-list">
+        <!-- JS 动态渲染 -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== 页脚 ======== -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <p class="footer-contact" id="footer-contact"></p>
+      <p class="footer-copy">© 2026 刘俊</p>
+    </div>
+  </footer>
+
+  <!-- ======== Modal 弹窗模板 ======== -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal-close" id="modal-close" aria-label="关闭">✕</button>
+      <h2 class="modal-title" id="modal-title"></h2>
+      <div class="modal-video-wrap" id="modal-video-wrap">
+        <video
+          class="modal-video"
+          id="modal-video"
+          controls
+          playsinline
+          preload="metadata"
+        >
+          您的浏览器不支持视频播放
+        </video>
+      </div>
+      <div class="modal-tags" id="modal-tags">
+        <!-- JS 动态渲染 -->
+      </div>
+      <div class="modal-detail" id="modal-detail"></div>
+    </div>
+  </div>
+
+  <!-- ======== JS 脚本 ======== -->
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
