@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>刘俊 — 渗透测试工程师</title>
+  <title>刘俊的博客</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,75 +12,86 @@
   <header class="header" id="header">
     <div class="container">
       <span class="header-name">刘俊</span>
-      <span class="header-title">渗透测试工程师</span>
+      <span class="header-tag">个人博客</span>
     </div>
   </header>
 
   <!-- ======== 个人介绍区 ======== -->
-  <section class="hero" id="hero">
+  <section class="hero">
     <div class="container">
-      <div class="hero-avatar" id="hero-avatar">
-        <img class="avatar-img" id="avatar-img" src="" alt="头像">
+      <div class="hero-avatar">
+        <img class="avatar-img" src="liujun.jpg" alt="刘俊头像">
       </div>
-      <h1 class="hero-name" id="hero-name"></h1>
-      <p class="hero-title" id="hero-title"></p>
-      <p class="hero-bio" id="hero-bio"></p>
+      <h1 class="hero-name">刘俊</h1>
+      <p class="hero-title">渗透测试工程师</p>
+      <p class="hero-bio">长沙学院通信工程本科，具备从漏洞挖掘到漏洞修复建议的独立渗透测试能力</p>
     </div>
   </section>
 
-  <!-- ======== 技术栈区 ======== -->
-  <section class="skills" id="skills">
+  <!-- ======== 文章列表区 ======== -->
+  <main class="posts-section">
     <div class="container">
-      <h2 class="section-title">🛠️ 技术栈</h2>
-      <div class="skills-tags" id="skills-tags">
-        <!-- JS 动态渲染 -->
-      </div>
-    </div>
-  </section>
+      <h2 class="section-title">📝 近期文章</h2>
+      <div class="post-list">
 
-  <!-- ======== 项目展示区 ======== -->
-  <section class="projects" id="projects">
-    <div class="container">
-      <h2 class="section-title">📁 项目展示</h2>
-      <div class="project-list" id="project-list">
-        <!-- JS 动态渲染 -->
+        <a class="post-card" href="posts/kali.html">
+          <div class="post-card-body">
+            <h3 class="post-card-title">Kali Linux虚拟机下载安装和汉化</h3>
+            <p class="post-card-excerpt">手把手讲解如何在 VMware 中下载、导入并启动 Kali Linux 虚拟机，包括鼠标光标问题修复与界面汉化教程。</p>
+            <div class="post-card-meta">
+              <span class="post-date">2026-07-01</span>
+              <div class="post-tags">
+                <span class="post-tag">Kali Linux</span>
+                <span class="post-tag">虚拟机</span>
+                <span class="post-tag">渗透测试</span>
+              </div>
+            </div>
+          </div>
+          <span class="post-card-arrow" aria-hidden="true">→</span>
+        </a>
+
+        <a class="post-card" href="posts/vmware.html">
+          <div class="post-card-body">
+            <h3 class="post-card-title">VMware Pro下载与安装</h3>
+            <p class="post-card-excerpt">介绍如何从 Broadcom 官网注册账号并下载 VMware Workstation Pro，包括账号验证问题的处理方法。</p>
+            <div class="post-card-meta">
+              <span class="post-date">2026-07-01</span>
+              <div class="post-tags">
+                <span class="post-tag">VMware</span>
+                <span class="post-tag">工具安装</span>
+                <span class="post-tag">虚拟机</span>
+              </div>
+            </div>
+          </div>
+          <span class="post-card-arrow" aria-hidden="true">→</span>
+        </a>
+
+        <a class="post-card" href="posts/typora.html">
+          <div class="post-card-body">
+            <h3 class="post-card-title">激活正版Typora（1.10以下版本）</h3>
+            <p class="post-card-excerpt">通过修改 JS 文件实现 Typora 1.9.x 永久激活，并配置自动关闭激活弹窗，提升写作体验。</p>
+            <div class="post-card-meta">
+              <span class="post-date">2026-07-01</span>
+              <div class="post-tags">
+                <span class="post-tag">Typora</span>
+                <span class="post-tag">写作工具</span>
+              </div>
+            </div>
+          </div>
+          <span class="post-card-arrow" aria-hidden="true">→</span>
+        </a>
+
       </div>
     </div>
-  </section>
+  </main>
 
   <!-- ======== 页脚 ======== -->
-  <footer class="footer" id="footer">
+  <footer class="footer">
     <div class="container">
-      <p class="footer-contact" id="footer-contact"></p>
+      <p class="footer-contact">📧 3396674938@qq.com</p>
       <p class="footer-copy">© 2026 刘俊</p>
     </div>
   </footer>
 
-  <!-- ======== Modal 弹窗模板 ======== -->
-  <div class="modal-overlay" id="modal-overlay">
-    <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-      <button class="modal-close" id="modal-close" aria-label="关闭">✕</button>
-      <h2 class="modal-title" id="modal-title"></h2>
-      <div class="modal-video-wrap" id="modal-video-wrap">
-        <video
-          class="modal-video"
-          id="modal-video"
-          controls
-          playsinline
-          preload="metadata"
-        >
-          您的浏览器不支持视频播放
-        </video>
-      </div>
-      <div class="modal-tags" id="modal-tags">
-        <!-- JS 动态渲染 -->
-      </div>
-      <div class="modal-detail" id="modal-detail"></div>
-    </div>
-  </div>
-
-  <!-- ======== JS 脚本 ======== -->
-  <script src="config.js"></script>
-  <script src="script.js"></script>
 </body>
 </html>

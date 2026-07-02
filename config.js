@@ -6,7 +6,7 @@
 
 const SITE_CONFIG = {
   // -- 个人信息 --
-  avatar: "feature-moonbase-img-2f4057.webp",
+  avatar: "liujun.jpg",
   name: "刘俊",
   title: "渗透测试工程师",
   bio: "长沙学院通信工程本科，具备从漏洞挖掘到漏洞修复建议的独立渗透测试能力",
