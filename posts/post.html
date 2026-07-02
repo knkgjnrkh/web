@@ -44,8 +44,8 @@
     </div>
   </footer>
 
-  <!-- marked.js 解析 Markdown -->
-  <script src="https://cdn.jsdelivr.net/npm/marked@9/marked.min.js"></script>
+  <!-- marked.js 本地文件，避免 CDN 延迟 -->
+  <script src="../marked.min.js"></script>
   <script>
     (function () {
       "use strict";
@@ -101,8 +101,13 @@
         return;
       }
 
-      // 配置 marked：图片保留原始路径
-      marked.setOptions({ breaks: true });
+      // 配置 marked：图片加 loading="lazy"，首屏外的图片延迟加载
+      const renderer = new marked.Renderer();
+      renderer.image = function (href, title, text) {
+        const titleAttr = title ? ' title="' + title + '"' : "";
+        return '<img src="' + href + '" alt="' + (text || "") + '"' + titleAttr + ' loading="lazy">';
+      };
+      marked.setOptions({ breaks: true, renderer: renderer });
 
       fetch(file)
         .then(function (res) {

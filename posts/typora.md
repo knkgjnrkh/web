@@ -8,7 +8,7 @@ tags: [Typora, 写作工具]
 
 #### 1、下载正版Typora
 
-打开 Typora 官网 https://typoraio.cn/，选择**历史版本**
+打开 Typora 官网 https://typoraio.cn/ ，选择**历史版本**
 
 ![Typora官网历史版本](../assets/typora/image-20260701230532449.png)
 
