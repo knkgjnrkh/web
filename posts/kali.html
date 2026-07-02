@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kali Linux虚拟机下载安装和汉化 — 刘俊的博客</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <!-- ======== 导航栏 ======== -->
+  <header class="header">
+    <div class="container">
+      <a class="header-back" href="../index.html">← 返回首页</a>
+      <a class="header-name" href="../index.html">刘俊的博客</a>
+    </div>
+  </header>
+
+  <!-- ======== 文章头部 ======== -->
+  <div class="article-header">
+    <div class="container">
+      <h1 class="article-title">Kali Linux虚拟机下载安装和汉化</h1>
+      <div class="article-meta">
+        <span class="article-date">2026-07-01</span>
+        <div class="post-tags">
+          <span class="post-tag">Kali Linux</span>
+          <span class="post-tag">虚拟机</span>
+          <span class="post-tag">渗透测试</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======== 文章正文 ======== -->
+  <main class="article-body">
+    <div class="container">
+      <div class="article-content">
+
+        <h4>1、下载</h4>
+
+        <p>
+          打开官网
+          <a href="https://www.kali.org/" target="_blank" rel="noopener">
+            Kali Linux | Penetration Testing and Ethical Hacking Linux Distribution
+          </a>
+        </p>
+
+        <img src="../assets/kali/image-20260701221706235.png" alt="Kali Linux官网">
+
+        <p>点击 <strong>DOWNLOAD</strong></p>
+
+        <p>
+          会有两种形式，左边 <strong>installer images</strong> 是下载 .iso 的镜像文件，右边 <strong>virtual machines</strong> 是虚拟机本体压缩包。
+        </p>
+
+        <img src="../assets/kali/image-20260701221822356.png" alt="两种下载形式">
+
+        <p>这里以下载右边虚拟机为例</p>
+
+        <img src="../assets/kali/image-20260701222140582.png" alt="选择虚拟机下载">
+
+        <p>选择对应的虚拟机（这里以 VMware 为例），点击下载图标开始下载。</p>
+
+        <p>下载好后解压。</p>
+
+        <h4>2、安装</h4>
+
+        <p>打开 VMware，选择 File，点击 Open</p>
+
+        <img src="../assets/kali/image-20260701222605902.png" alt="VMware打开文件">
+
+        <p>进入到解压后的文件夹，选择后缀 <code>.vmx</code> 的文件打开。</p>
+
+        <p>调整好文件位置、CPU、内存大小，然后打开。</p>
+
+        <p>账号密码：<code>kali/kali</code></p>
+
+        <h4>3、解决没有鼠标光标</h4>
+
+        <p>可能会出现没有鼠标光标的问题</p>
+
+        <p>
+          需要先关闭 Kali，右键 Kali 虚拟机 → manage → change hardware compatibility
+        </p>
+
+        <img src="../assets/kali/image-20260701223258839.png" alt="change hardware compatibility">
+
+        <p>点击 next，将 Hardware 栏换成 <strong>workstation 17.x</strong></p>
+
+        <img src="../assets/kali/image-20260701223643260.png" alt="选择workstation 17.x">
+
+        <p>重新启动 Kali，光标就回来了。</p>
+
+        <h4>4、汉化教程</h4>
+
+        <p>打开命令行输入命令</p>
+
+        <pre><code>sudo dpkg-reconfigure locales</code></pre>
+
+        <p>
+          输入密码跳转到以下页面，滚轮或者下键往下翻找到中文 <code>zh_CN</code>，按空格选中，会出现星号代表已选中，回车。
+        </p>
+
+        <img src="../assets/kali/image-20260701224322563.png" alt="选择zh_CN">
+
+        <p>再选择 <strong>zh_CN</strong>，回车。</p>
+
+        <img src="../assets/kali/image-20260701224816543.png" alt="确认zh_CN">
+
+        <p>完成后重启</p>
+
+        <img src="../assets/kali/image-20260701224940523.png" alt="重启Kali">
+
+        <p>输入账密后进入桌面会弹出操作框，选择<strong>保留旧的名称</strong>。</p>
+
+        <img src="../assets/kali/image-20260701225138193.png" alt="保留旧的名称">
+
+        <p>汉化完成。</p>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ======== 页脚 ======== -->
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-contact">📧 3396674938@qq.com</p>
+      <p class="footer-copy">© 2026 刘俊的博客</p>
+    </div>
+  </footer>
+
+</body>
+</html>
