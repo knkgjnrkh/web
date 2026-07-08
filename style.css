@@ -186,7 +186,7 @@ a.header-name:hover {
 .hero-bio {
   font-size: 14px;
   color: var(--color-text-secondary);
-  max-width: 480px;
+  max-width: 520px;
   margin: 0 auto;
   line-height: 1.7;
 }
