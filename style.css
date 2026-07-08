@@ -606,6 +606,24 @@ a.header-name:hover {
   margin: 0 auto;
 }
 
+/* 文章无标题时：去掉左侧目录列，正文与右栏两列布局 */
+.article-layout.no-toc {
+  grid-template-columns: minmax(0, var(--max-width)) 220px;
+}
+/* 文章无推荐时：去掉右侧推荐列 */
+.article-layout.no-rec {
+  grid-template-columns: 220px minmax(0, var(--max-width));
+}
+/* 两者都无：正文单列居中 */
+.article-layout.no-toc.no-rec {
+  grid-template-columns: minmax(0, var(--max-width));
+}
+/* 收起的那一栏直接不占位 */
+.article-layout.no-toc .toc-sidebar,
+.article-layout.no-rec .rec-sidebar {
+  display: none;
+}
+
 /* 中间正文：复用原 .article-content 样式，去掉外层 container 限制 */
 .article-main {
   min-width: 0;

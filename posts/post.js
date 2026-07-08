@@ -50,6 +50,8 @@
     const tocEl = document.getElementById("toc");
     if (!headings.length) {
       document.getElementById("toc-sidebar").style.display = "none";
+      // 无标题：给布局加标记，收成「正文 + 推荐」两列，避免左侧空出一列
+      document.querySelector(".article-layout").classList.add("no-toc");
       return;
     }
     const list = document.createElement("ul");
@@ -92,7 +94,7 @@
 
   // 生成右侧推荐文章（优先共同标签，不足则用最新文章补齐）
   function buildRecommend(currentFile, currentTags) {
-    fetch("../posts.json")
+    fetch("../posts.json?t=" + Date.now())
       .then(function (r) { return r.ok ? r.json() : []; })
       .then(function (posts) {
         const others = posts.filter(function (p) { return p.file !== currentFile; });
@@ -110,6 +112,7 @@
         const box = document.getElementById("rec-list");
         if (!picks.length) {
           document.getElementById("rec-sidebar").style.display = "none";
+          document.querySelector(".article-layout").classList.add("no-rec");
           return;
         }
         picks.forEach(function (p) {
@@ -156,7 +159,7 @@
   };
   marked.setOptions({ breaks: true, renderer: renderer });
 
-  fetch(file)
+  fetch(file + (file.indexOf("?") < 0 ? "?t=" : "&t=") + Date.now())
     .then(function (res) {
       if (!res.ok) throw new Error("HTTP " + res.status);
       return res.text();
