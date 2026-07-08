@@ -31,89 +31,18 @@
   <!-- ======== 文章列表区 ======== -->
   <main class="posts-section">
     <div class="container">
-      <h2 class="section-title">📝 近期文章</h2>
-      <div class="post-list">
-
-        <a class="post-card" href="posts/post.html?file=kali.md">
-          <div class="post-card-body">
-            <h3 class="post-card-title">Kali Linux虚拟机下载安装和汉化</h3>
-            <p class="post-card-excerpt">手把手讲解如何在 VMware 中下载、导入并启动 Kali Linux 虚拟机，包括鼠标光标问题修复与界面汉化教程。</p>
-            <div class="post-card-meta">
-              <span class="post-date">2026-07-01</span>
-              <div class="post-tags">
-                <span class="post-tag">Kali Linux</span>
-                <span class="post-tag">虚拟机</span>
-                <span class="post-tag">渗透测试</span>
-              </div>
-            </div>
-          </div>
-          <span class="post-card-arrow" aria-hidden="true">→</span>
-        </a>
-
-        <a class="post-card" href="posts/post.html?file=vmware.md">
-          <div class="post-card-body">
-            <h3 class="post-card-title">VMware Pro下载与安装</h3>
-            <p class="post-card-excerpt">介绍如何从 Broadcom 官网注册账号并下载 VMware Workstation Pro，包括账号验证问题的处理方法。</p>
-            <div class="post-card-meta">
-              <span class="post-date">2026-07-01</span>
-              <div class="post-tags">
-                <span class="post-tag">VMware</span>
-                <span class="post-tag">工具安装</span>
-                <span class="post-tag">虚拟机</span>
-              </div>
-            </div>
-          </div>
-          <span class="post-card-arrow" aria-hidden="true">→</span>
-        </a>
-
-        <a class="post-card" href="posts/post.html?file=typora.md">
-          <div class="post-card-body">
-            <h3 class="post-card-title">激活正版Typora（1.10以下版本）</h3>
-            <p class="post-card-excerpt">通过修改 JS 文件实现 Typora 1.9.x 永久激活，并配置自动关闭激活弹窗，提升写作体验。</p>
-            <div class="post-card-meta">
-              <span class="post-date">2026-07-01</span>
-              <div class="post-tags">
-                <span class="post-tag">Typora</span>
-                <span class="post-tag">写作工具</span>
-              </div>
-            </div>
-          </div>
-          <span class="post-card-arrow" aria-hidden="true">→</span>
-        </a>
-
-        <a class="post-card" href="posts/post.html?file=linux.md">
-          <div class="post-card-body">
-            <h3 class="post-card-title">Linux 常用命令速查</h3>
-            <p class="post-card-excerpt">涵盖关机重启、目录操作、文件内容查看等高频命令，以及单用户模式找回 root 密码的完整步骤。</p>
-            <div class="post-card-meta">
-              <span class="post-date">2026-07-08</span>
-              <div class="post-tags">
-                <span class="post-tag">Linux</span>
-                <span class="post-tag">命令行</span>
-                <span class="post-tag">运维</span>
-              </div>
-            </div>
-          </div>
-          <span class="post-card-arrow" aria-hidden="true">→</span>
-        </a>
-
-        <a class="post-card" href="posts/post.html?file=msf.md">
-          <div class="post-card-body">
-            <h3 class="post-card-title">MSF 构建木马与远程控制（渗透测试实验）</h3>
-            <p class="post-card-excerpt">在授权实验环境中，使用 msfvenom 生成反弹 Shell 木马，配合 multi/handler 监听，实现对 Windows 靶机的远程控制。</p>
-            <div class="post-card-meta">
-              <span class="post-date">2026-07-08</span>
-              <div class="post-tags">
-                <span class="post-tag">Metasploit</span>
-                <span class="post-tag">渗透测试</span>
-                <span class="post-tag">Meterpreter</span>
-              </div>
-            </div>
-          </div>
-          <span class="post-card-arrow" aria-hidden="true">→</span>
-        </a>
-
+      <div class="posts-head">
+        <h2 class="section-title">📝 全部文章</h2>
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="search-input" class="search-input"
+                 placeholder="搜索文章标题或标签…" autocomplete="off">
+        </div>
       </div>
+      <div class="post-list" id="post-list">
+        <p class="loading-tip">正在加载文章…</p>
+      </div>
+      <p class="no-result" id="no-result" hidden>没有匹配的文章</p>
     </div>
   </main>
 
@@ -125,5 +54,70 @@
     </div>
   </footer>
 
+  <script>
+    (function () {
+      "use strict";
+      var listEl = document.getElementById("post-list");
+      var noResult = document.getElementById("no-result");
+      var searchInput = document.getElementById("search-input");
+      var allPosts = [];
+
+      // 转义 HTML，防止标题/标签里的特殊字符破坏结构
+      function esc(s) {
+        return String(s).replace(/[&<>"']/g, function (c) {
+          return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+        });
+      }
+
+      function cardHTML(p) {
+        var tags = (p.tags || []).map(function (t) {
+          return '<span class="post-tag">' + esc(t) + "</span>";
+        }).join("");
+        return '<a class="post-card" href="posts/post.html?file=' + encodeURIComponent(p.file) + '">' +
+          '<div class="post-card-body">' +
+          '<h3 class="post-card-title">' + esc(p.title) + "</h3>" +
+          '<p class="post-card-excerpt">' + esc(p.excerpt || "") + "</p>" +
+          '<div class="post-card-meta">' +
+          '<span class="post-date">' + esc(p.date || "") + "</span>" +
+          '<div class="post-tags">' + tags + "</div>" +
+          "</div></div>" +
+          '<span class="post-card-arrow" aria-hidden="true">→</span></a>';
+      }
+
+      function render(posts) {
+        if (!posts.length) {
+          listEl.innerHTML = "";
+          noResult.hidden = false;
+          return;
+        }
+        noResult.hidden = true;
+        listEl.innerHTML = posts.map(cardHTML).join("");
+      }
+
+      function filter(kw) {
+        kw = kw.trim().toLowerCase();
+        if (!kw) return allPosts;
+        return allPosts.filter(function (p) {
+          var hay = (p.title + " " + (p.tags || []).join(" ")).toLowerCase();
+          return hay.indexOf(kw) >= 0;
+        });
+      }
+
+      searchInput.addEventListener("input", function () {
+        render(filter(this.value));
+      });
+
+      fetch("posts.json?t=" + Date.now())
+        .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+        .then(function (data) {
+          allPosts = data;
+          render(allPosts);
+        })
+        .catch(function () {
+          listEl.innerHTML =
+            '<p class="loading-tip">文章加载失败。本地预览请用 HTTP 服务器（preview.bat），而非直接打开文件。</p>';
+        });
+    })();
+  </script>
 </body>
 </html>

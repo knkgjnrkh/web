@@ -16,14 +16,13 @@ python -m http.server 8080
 
 然后浏览器打开 `http://localhost:8080`
 
-## 新增文章
+## 新增文章（现在全自动，不用再手改 index.html）
 
-1. 在 `posts/` 下新建一个 `.md` 文件，文件头加 frontmatter：
+1. 在 `posts/` 下新建一个 `.md` 文件，文件头加 frontmatter（`date` 可省略，构建时会自动补今天日期）：
 
    ```markdown
    ---
    title: 文章标题
-   date: 2026-07-02
    tags: [标签1, 标签2]
    ---
 
@@ -32,23 +31,16 @@ python -m http.server 8080
 
 2. 将配图放入 `assets/<文章名>/` 目录，Markdown 中引用写 `../assets/<文章名>/图片名.png`
 
-3. 在 `index.html` 的文章列表区新增一个卡片：
+3. 双击 `deploy.bat`。它会自动：
+   - 运行 `build.py` 扫描所有文章，生成 `posts.json`（首页列表、搜索、推荐都读它）
+   - 给没写日期的文章补上今天日期
+   - 提交并推送到 GitHub
 
-   ```html
-   <a class="post-card" href="posts/post.html?file=新文章.md">
-     <div class="post-card-body">
-       <h3 class="post-card-title">文章标题</h3>
-       <p class="post-card-excerpt">摘要…</p>
-       <div class="post-card-meta">
-         <span class="post-date">2026-07-02</span>
-         <div class="post-tags">
-           <span class="post-tag">标签</span>
-         </div>
-       </div>
-     </div>
-     <span class="post-card-arrow" aria-hidden="true">→</span>
-   </a>
-   ```
+首页列表、搜索、文章页的目录（TOC）和右侧推荐，全部由 `posts.json` 自动驱动，无需手动维护卡片。
+
+## 本地预览
+
+双击 `preview.bat`（自动起 HTTP 服务并打开浏览器），或手动 `python -m http.server 8080`。
 
 ## 文件结构
 

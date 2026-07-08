@@ -530,3 +530,187 @@ a.header-name:hover {
   .article-content h2 { font-size: 17px; }
   .article-content h3 { font-size: 15px; }
 }
+
+/* ============================================================
+   首页搜索栏
+   ============================================================ */
+
+.posts-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.posts-head .section-title {
+  margin-bottom: 0;
+}
+
+.search-box {
+  position: relative;
+  flex: 1;
+  max-width: 320px;
+  min-width: 200px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 13px;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.search-input {
+  width: 100%;
+  padding: 9px 14px 9px 34px;
+  font-size: 14px;
+  color: var(--color-text);
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.search-input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+  background: var(--color-bg);
+}
+
+.no-result,
+.loading-tip {
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 14px;
+  padding: 32px 0;
+}
+
+/* ============================================================
+   文章页三栏布局：左目录 / 中正文 / 右推荐
+   ============================================================ */
+
+.article-layout {
+  display: grid;
+  grid-template-columns: 220px minmax(0, var(--max-width)) 220px;
+  gap: 32px;
+  justify-content: center;
+  align-items: start;
+  padding: 32px 20px 64px;
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+/* 中间正文：复用原 .article-content 样式，去掉外层 container 限制 */
+.article-main {
+  min-width: 0;
+}
+
+/* 侧栏通用：吸顶跟随滚动 */
+.toc-sticky,
+.rec-sticky {
+  position: sticky;
+  top: 76px;
+  max-height: calc(100vh - 96px);
+  overflow-y: auto;
+}
+
+.sidebar-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 12px;
+  padding-left: 4px;
+}
+
+/* ——— 左侧目录 ——— */
+.toc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-left: 2px solid var(--color-border);
+}
+
+.toc-item a {
+  display: block;
+  padding: 4px 0 4px 12px;
+  margin-left: -2px;
+  border-left: 2px solid transparent;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color var(--transition), border-color var(--transition);
+}
+
+.toc-item a:hover {
+  color: var(--color-primary);
+}
+
+.toc-item a.active {
+  color: var(--color-primary);
+  border-left-color: var(--color-primary);
+  font-weight: 600;
+}
+
+/* 按标题级别缩进 */
+.toc-h1 a { padding-left: 12px; }
+.toc-h2 a { padding-left: 12px; }
+.toc-h3 a { padding-left: 26px; font-size: 12.5px; }
+.toc-h4 a { padding-left: 40px; font-size: 12px; }
+
+/* ——— 右侧推荐 ——— */
+.rec-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.rec-item {
+  display: block;
+  padding: 10px 12px;
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: border-color var(--transition), transform var(--transition);
+}
+
+.rec-item:hover {
+  border-color: var(--color-primary);
+  transform: translateX(2px);
+}
+
+.rec-title {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text);
+  line-height: 1.45;
+  margin-bottom: 4px;
+}
+
+.rec-date {
+  display: block;
+  font-size: 11px;
+  color: var(--color-text-muted);
+}
+
+/* ——— 响应式：窄屏隐藏侧栏，正文单列 ——— */
+@media (max-width: 1100px) {
+  .article-layout {
+    grid-template-columns: minmax(0, var(--max-width));
+    max-width: 100%;
+  }
+  .toc-sidebar,
+  .rec-sidebar {
+    display: none;
+  }
+}

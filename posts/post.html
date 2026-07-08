@@ -27,14 +27,31 @@
     </div>
   </div>
 
-  <!-- ======== 文章正文（由 JS 填充） ======== -->
-  <main class="article-body">
-    <div class="container">
+  <!-- ======== 三栏布局：左目录 / 中正文 / 右推荐 ======== -->
+  <div class="article-layout">
+    <!-- 左侧目录 -->
+    <aside class="toc-sidebar" id="toc-sidebar">
+      <div class="toc-sticky">
+        <p class="sidebar-title">目录</p>
+        <nav class="toc" id="toc"></nav>
+      </div>
+    </aside>
+
+    <!-- 中间正文 -->
+    <main class="article-main">
       <div class="article-content" id="content">
         <p class="loading-tip">正在加载文章…</p>
       </div>
-    </div>
-  </main>
+    </main>
+
+    <!-- 右侧推荐 -->
+    <aside class="rec-sidebar" id="rec-sidebar">
+      <div class="rec-sticky">
+        <p class="sidebar-title">推荐阅读</p>
+        <div class="rec-list" id="rec-list"></div>
+      </div>
+    </aside>
+  </div>
 
   <!-- ======== 页脚 ======== -->
   <footer class="footer">
@@ -46,85 +63,6 @@
 
   <!-- marked.js 本地文件，避免 CDN 延迟 -->
   <script src="../marked.min.js"></script>
-  <script>
-    (function () {
-      "use strict";
-
-      /* ——— 工具函数 ——— */
-
-      // 从 ?file=xxx.md 获取目标文件名
-      function getParam(name) {
-        return new URLSearchParams(location.search).get(name);
-      }
-
-      // 解析 YAML-lite frontmatter（--- ... ---）
-      function parseFrontmatter(text) {
-        const m = text.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/);
-        if (!m) return { meta: {}, body: text };
-        const meta = {};
-        m[1].split("\n").forEach(function (line) {
-          const i = line.indexOf(":");
-          if (i < 0) return;
-          const key = line.slice(0, i).trim();
-          let val = line.slice(i + 1).trim();
-          // 简单数组：[a, b, c]
-          if (val.startsWith("[") && val.endsWith("]")) {
-            val = val.slice(1, -1).split(",").map(function (s) { return s.trim(); });
-          }
-          meta[key] = val;
-        });
-        return { meta: meta, body: m[2] };
-      }
-
-      // 把解析出的元数据渲染到页面头部
-      function setMeta(meta) {
-        const title = meta.title || "文章";
-        document.title = title + " — nlklmll的博客";
-        document.getElementById("article-title").textContent = title;
-        document.getElementById("article-date").textContent = meta.date || "";
-
-        const tagsEl = document.getElementById("article-tags");
-        const tags = Array.isArray(meta.tags) ? meta.tags : [];
-        tags.forEach(function (tag) {
-          const span = document.createElement("span");
-          span.className = "post-tag";
-          span.textContent = tag;
-          tagsEl.appendChild(span);
-        });
-      }
-
-      /* ——— 主逻辑 ——— */
-
-      const file = getParam("file");
-      if (!file) {
-        window.location.replace("../index.html");
-        return;
-      }
-
-      // 配置 marked：图片加 loading="lazy"，首屏外的图片延迟加载
-      const renderer = new marked.Renderer();
-      renderer.image = function (href, title, text) {
-        const titleAttr = title ? ' title="' + title + '"' : "";
-        return '<img src="' + href + '" alt="' + (text || "") + '"' + titleAttr + ' loading="lazy">';
-      };
-      marked.setOptions({ breaks: true, renderer: renderer });
-
-      fetch(file)
-        .then(function (res) {
-          if (!res.ok) throw new Error("HTTP " + res.status);
-          return res.text();
-        })
-        .then(function (text) {
-          const parsed = parseFrontmatter(text);
-          setMeta(parsed.meta);
-          document.getElementById("content").innerHTML = marked.parse(parsed.body);
-        })
-        .catch(function () {
-          document.getElementById("article-title").textContent = "加载失败";
-          document.getElementById("content").innerHTML =
-            "<p>文章加载失败。如果是本地预览，请使用 HTTP 服务器（VS Code → Live Server）而非直接打开文件。</p>";
-        });
-    })();
-  </script>
+  <script src="post.js"></script>
 </body>
 </html>
