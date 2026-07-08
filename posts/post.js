@@ -127,6 +127,20 @@
       });
   }
 
+  /* ——— 回到顶部按钮 ——— */
+  (function () {
+    const btn = document.getElementById("back-to-top");
+    if (!btn) return;
+    function onScroll() {
+      btn.classList.toggle("show", window.scrollY > 300);
+    }
+    btn.addEventListener("click", function () {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+  })();
+
   /* ——— 主逻辑 ——— */
 
   const file = getParam("file");

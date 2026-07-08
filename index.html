@@ -54,6 +54,9 @@
     </div>
   </footer>
 
+  <!-- ======== 回到顶部按钮 ======== -->
+  <button id="back-to-top" class="back-to-top" aria-label="回到顶部" title="回到顶部">↑</button>
+
   <script>
     (function () {
       "use strict";
@@ -105,6 +108,15 @@
 
       searchInput.addEventListener("input", function () {
         render(filter(this.value));
+      });
+
+      // 回到顶部按钮：下滑超过 300px 显示
+      var backBtn = document.getElementById("back-to-top");
+      window.addEventListener("scroll", function () {
+        backBtn.classList.toggle("show", window.scrollY > 300);
+      }, { passive: true });
+      backBtn.addEventListener("click", function () {
+        window.scrollTo({ top: 0, behavior: "smooth" });
       });
 
       fetch("posts.json?t=" + Date.now())

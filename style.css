@@ -611,11 +611,13 @@ a.header-name:hover {
   min-width: 0;
 }
 
-/* 侧栏通用：吸顶跟随滚动 */
-.toc-sticky,
-.rec-sticky {
+/* 侧栏吸顶跟随滚动：sticky 必须直接作用在 grid 项上，
+   且 align-self:start 让它保持内容高度，才有空间随页面滚动而吸附。 */
+.toc-sidebar,
+.rec-sidebar {
   position: sticky;
   top: 76px;
+  align-self: start;
   max-height: calc(100vh - 96px);
   overflow-y: auto;
 }
@@ -712,5 +714,54 @@ a.header-name:hover {
   .toc-sidebar,
   .rec-sidebar {
     display: none;
+  }
+}
+
+/* ============================================================
+   回到顶部按钮
+   ============================================================ */
+
+.back-to-top {
+  position: fixed;
+  right: 28px;
+  bottom: 28px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: opacity var(--transition), transform var(--transition),
+    visibility var(--transition), background var(--transition);
+  z-index: 200;
+}
+
+.back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  background: var(--color-primary-dark);
+}
+
+@media (max-width: 640px) {
+  .back-to-top {
+    right: 16px;
+    bottom: 16px;
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
   }
 }
