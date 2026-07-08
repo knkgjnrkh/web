@@ -1,7 +1,7 @@
 ---
 title: 搭建DVWA靶场
 date: 2026-07-08
-tags: [DVWA，phpstudy，docker]
+tags: [DVWA, phpstudy, docker]
 ---
 
 ### Windows版
