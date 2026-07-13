@@ -1,5 +1,19 @@
 [
   {
+    "file": "DVWA Brute Force.md",
+    "title": "DVWA Brute Force",
+    "date": "2026-07-13",
+    "tags": [],
+    "excerpt": "DVWA Brute Force(low) 通过burpsuite内嵌浏览器打开dvwa靶场，开启拦截。 随机输入账号密…"
+  },
+  {
+    "file": "搭建DVWA靶场.md",
+    "title": "搭建DVWA靶场",
+    "date": "2026-07-13",
+    "tags": [],
+    "excerpt": "搭建DVWA靶场 Windows版 1. 去 phpstudy 官网（xp.cn）下载 phpstudy_pro，安装 …"
+  },
+  {
     "file": "linux.md",
     "title": "Linux 常用命令速查",
     "date": "2026-07-08",
@@ -20,17 +34,6 @@
       "Meterpreter"
     ],
     "excerpt": "声明：本文仅用于授权渗透测试实验环境，所有操作均在自建靶机上进行，请勿用于非法用途。 1、生成木马 2、上传靶机并执行木…"
-  },
-  {
-    "file": "搭建DVWA靶场.md",
-    "title": "搭建DVWA靶场",
-    "date": "2026-07-08",
-    "tags": [
-      "DVWA",
-      "phpstudy",
-      "docker"
-    ],
-    "excerpt": "Windows版 1. 去 phpstudy 官网（xp.cn）下载 phpstudy_pro，安装 2. 面板里启动 …"
   },
   {
     "file": "kali.md",
