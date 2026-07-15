@@ -1,6 +1,6 @@
 ---
 title: DVWA Brute Force
-date: 2026-07-13
+date: 2026-07-15
 tags: []
 ---
 

@@ -1,20 +1,28 @@
 ---
-title: 激活正版Typora（1.10以下版本）
-date: 2026-07-01
-tags: [Typora, 写作工具]
+title: Typora
+date: 2026-07-15
+tags: []
 ---
 
-> ⚠️ **注意：** 该方法仅适用于 1.10 以下版本
+# 激活正版Typora
+
+
+
+> [!CAUTION]
+>
+> 该方法仅适用于1.10以下版本
+
+
 
 #### 1、下载正版Typora
 
-打开 Typora 官网 https://typoraio.cn/ ，选择**历史版本**
+打开Typora官网https://typoraio.cn/，选择历史版本
 
-![Typora官网历史版本](../assets/typora/image-20260701230532449.png)
+![image-20260701230532449](../assets/Typora/image-20260701230532449.png)
 
-往下找到 **1.9.3** 下载
+往下找到1.9.3下载
 
-![下载1.9.3版本](../assets/typora/image-20260701230747065.png)
+![image-20260701230747065](../assets/Typora/image-20260701230747065.png)
 
 下好后启动安装程序，按照提示正常安装，记住安装路径。
 
@@ -28,12 +36,12 @@ C:\Program Files\Typora\resources\page-dist\static\js
 
 用文本编辑器打开这个文件
 
-![打开JS文件](../assets/typora/image-20260701231252283.png)
+![image-20260701231252283](../assets/Typora/image-20260701231252283.png)
 
-Ctrl+F 查找：
+Ctrl+F查找：
 
 ```
-e.hasActivated="true"==e.hasActivated
+e.hasActivated="true"==e.hasActivated`
 ```
 
 替换成：
@@ -42,19 +50,19 @@ e.hasActivated="true"==e.hasActivated
 e.hasActivated="true"=="true"
 ```
 
-保存后启动 Typora，提示已激活。
+保存后启动Typora，提示已激活。
 
 #### 3、自动关闭已激活弹窗
 
-在安装目录中找到文件 **license.html**
+在安装目录中找到文件**license.html**
 
 ```
-C:\Program Files\Typora\resources\page-dist
+..\Typora\resources\page-dist
 ```
 
-![license.html文件](../assets/typora/image-20260701231924818.png)
+![image-20260701231924818](../assets/Typora/image-20260701231924818.png)
 
-用文本编辑器打开，Ctrl+F 查找：
+用文本编辑器打开，Ctrl+F查找：
 
 ```
 </body></html>
@@ -66,4 +74,5 @@ C:\Program Files\Typora\resources\page-dist
 </body><script>window.onload=function(){setTimeout(()=>{window.close();},500);}</script></html>
 ```
 
-保存后重启 Typora，弹窗激活 500ms 后会自动关闭，如果报错可增加时间。
+保存后重启typora，弹窗激活500ms后会自动关闭，如果报错可增加时间。
+

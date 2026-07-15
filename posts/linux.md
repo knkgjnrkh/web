@@ -1,8 +1,12 @@
 ---
-title: Linux 常用命令速查
-date: 2026-07-08
-tags: [Linux, 命令行, 运维]
+title: Linux
+date: 2026-07-15
+tags: []
 ---
+
+# Linux
+
+
 
 命令大全[Linux 命令大全 | 菜鸟教程](https://www.runoob.com/linux/linux-command-manual.html)
 
@@ -54,31 +58,31 @@ reboot 命令 reboot 通知系统重启。
 
 重启linux系统
 
-![img](../assets/linux/4_21.png)
+![img](../assets/Linux/4_21.png)
 
 3 秒之内要按一下回车，出现如下界面
 
-![img](../assets/linux/4_22.png)
+![img](../assets/Linux/4_22.png)
 
 然后输入e
 
-![img](../assets/linux/4_23.png)
+![img](../assets/Linux/4_23.png)
 
 在 第二行最后边输入 single，有一个空格。具体方法为按向下尖头移动到第二行，按"e"进入编辑模式
 
-![img](../assets/linux/4_24.png)
+![img](../assets/Linux/4_24.png)
 
 在后边加上single 回车
 
-![img](../assets/linux/4_25.png)
+![img](../assets/Linux/4_25.png)
 
 最后按"b"启动，启动后就进入了单用户模式了
 
-![img](../assets/linux/4_26.png)
+![img](../assets/Linux/4_26.png)
 
 此时已经进入到单用户模式了，你可以更改root密码了。更密码的命令为 passwd
 
-![img](../assets/linux/4_27.png)
+![img](../assets/Linux/4_27.png)
 
 
 
@@ -110,3 +114,4 @@ Linux系统中使用以下命令来查看文件的内容：
 - tail 只看尾巴几行
 
 你可以使用 *man [命令]*来查看各个命令的使用文档，如 ：man cp。
+

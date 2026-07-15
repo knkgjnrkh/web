@@ -1,6 +1,6 @@
 ---
 title: 搭建DVWA靶场
-date: 2026-07-13
+date: 2026-07-15
 tags: []
 ---
 
@@ -10,7 +10,7 @@ tags: []
 
 ### Windows版
 
-1. 去 phpstudy 官网（[xp.cn](xp.cn)）下载 phpstudy_pro，安装
+1. 去 phpstudy 官网（[xp.cn](https://xp.cn)）下载 phpstudy_pro，安装
 
 2. 面板里启动 Apache + MySQL 两个服务，看到绿灯就是正常
 
