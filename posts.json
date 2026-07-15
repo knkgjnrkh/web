@@ -52,7 +52,10 @@
     "file": "msf构建木马.md",
     "title": "msf构建木马",
     "date": "2026-07-15",
-    "tags": [],
+    "tags": [
+      "metasploit",
+      "木马"
+    ],
     "excerpt": "msf构建木马 1、生成木马 2、上传靶机并执行木马 .ps1脚本文件不一定能执行成功 比如提示“在此系统中禁止执行脚本…"
   },
   {
@@ -66,7 +69,9 @@
     "file": "搭建sqli-labs靶场(win).md",
     "title": "搭建sqli-labs靶场(win)",
     "date": "2026-07-15",
-    "tags": [],
+    "tags": [
+      "sqli"
+    ],
     "excerpt": "搭建sqlilabs靶场(win) 1、安装好phpstudy 省略。详见文章搭建DVWA靶场 2、下载 在..\\php…"
   }
 ]

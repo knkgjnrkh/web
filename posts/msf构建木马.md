@@ -1,7 +1,7 @@
 ---
 title: msf构建木马
 date: 2026-07-15
-tags: []
+tags: [metasploit,木马]
 ---
 
 # msf构建木马
