@@ -92,6 +92,82 @@
     onScroll();
   }
 
+  function copyText(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+      return navigator.clipboard.writeText(text);
+    }
+
+    const textarea = document.createElement("textarea");
+    textarea.value = text;
+    textarea.setAttribute("readonly", "");
+    textarea.style.position = "fixed";
+    textarea.style.left = "-9999px";
+    document.body.appendChild(textarea);
+    textarea.select();
+
+    try {
+      document.execCommand("copy");
+      return Promise.resolve();
+    } catch (err) {
+      return Promise.reject(err);
+    } finally {
+      textarea.remove();
+    }
+  }
+
+  function enhanceCodeBlocks(contentEl) {
+    contentEl.querySelectorAll("pre").forEach(function (pre, idx) {
+      if (pre.parentElement && pre.parentElement.classList.contains("code-block")) return;
+
+      const wrapper = document.createElement("div");
+      wrapper.className = "code-block";
+
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "code-copy-btn";
+      button.textContent = "复制";
+      button.setAttribute("aria-label", "复制代码块 " + (idx + 1));
+
+      pre.parentNode.insertBefore(wrapper, pre);
+      wrapper.appendChild(button);
+      wrapper.appendChild(pre);
+
+      button.addEventListener("click", function () {
+        const code = pre.querySelector("code");
+        const text = code ? code.textContent : pre.textContent;
+        copyText(text).then(function () {
+          button.textContent = "已复制";
+          button.classList.add("copied");
+          window.setTimeout(function () {
+            button.textContent = "复制";
+            button.classList.remove("copied");
+          }, 1400);
+        }).catch(function () {
+          button.textContent = "复制失败";
+          window.setTimeout(function () {
+            button.textContent = "复制";
+          }, 1400);
+        });
+      });
+    });
+  }
+
+  function enhanceTables(contentEl) {
+    contentEl.querySelectorAll("table").forEach(function (table) {
+      if (table.parentElement && table.parentElement.classList.contains("article-table-wrap")) return;
+
+      const wrapper = document.createElement("div");
+      wrapper.className = "article-table-wrap";
+      table.parentNode.insertBefore(wrapper, table);
+      wrapper.appendChild(table);
+    });
+  }
+
+  function enhanceArticleContent(contentEl) {
+    enhanceCodeBlocks(contentEl);
+    enhanceTables(contentEl);
+  }
+
   // 生成右侧推荐文章（优先共同标签，不足则用最新文章补齐）
   function buildRecommend(currentFile, currentTags) {
     fetch("../posts.json?t=" + Date.now())
@@ -157,7 +233,7 @@
     const titleAttr = title ? ' title="' + title + '"' : "";
     return '<img src="' + href + '" alt="' + (text || "") + '"' + titleAttr + ' loading="lazy">';
   };
-  marked.setOptions({ breaks: true, renderer: renderer });
+  marked.setOptions({ breaks: true, gfm: true, renderer: renderer });
 
   fetch(file + (file.indexOf("?") < 0 ? "?t=" : "&t=") + Date.now())
     .then(function (res) {
@@ -169,6 +245,7 @@
       const info = setMeta(parsed.meta);
       const contentEl = document.getElementById("content");
       contentEl.innerHTML = marked.parse(parsed.body);
+      enhanceArticleContent(contentEl);
       buildTOC(contentEl);
       buildRecommend(file, info.tags);
     })

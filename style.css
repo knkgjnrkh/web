@@ -387,21 +387,100 @@ a.header-name:hover {
   color: #d63384;
 }
 
-.article-content pre {
-  background: #1e1e2e;
-  border-radius: var(--radius-sm);
-  padding: 16px 20px;
-  overflow-x: auto;
+.code-block {
+  position: relative;
   margin: 16px 0;
+}
+
+.article-content pre {
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 44px 18px 16px;
+  overflow-x: auto;
+  margin: 0;
+  box-shadow: var(--shadow-sm);
 }
 
 .article-content pre code {
   background: none;
   border: none;
   padding: 0;
-  color: #cdd6f4;
+  color: var(--color-text);
   font-size: 13px;
   line-height: 1.7;
+}
+
+.code-copy-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 1;
+  min-width: 58px;
+  height: 28px;
+  padding: 0 10px;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  background: var(--color-bg-alt);
+  color: var(--color-text-secondary);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--transition), border-color var(--transition),
+    color var(--transition);
+}
+
+.code-copy-btn:hover {
+  border-color: var(--color-primary);
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+}
+
+.code-copy-btn.copied {
+  border-color: #16a34a;
+  background: #f0fdf4;
+  color: #15803d;
+}
+
+.article-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  margin: 18px 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+}
+
+.article-content table {
+  width: 100%;
+  min-width: 520px;
+  border-collapse: collapse;
+  background: #ffffff;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.article-content th,
+.article-content td {
+  padding: 10px 12px;
+  border: 1px solid var(--color-border);
+  text-align: left;
+  vertical-align: top;
+}
+
+.article-content th {
+  background: var(--color-bg-alt);
+  color: var(--color-text);
+  font-weight: 700;
+}
+
+.article-content tr:nth-child(even) td {
+  background: #fbfdff;
+}
+
+.article-content td code,
+.article-content th code {
+  white-space: nowrap;
 }
 
 .article-content blockquote {
