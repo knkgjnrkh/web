@@ -1,7 +1,7 @@
 ---
 title: DVWA Brute Force
 date: 2026-07-15
-tags: [靶场]
+tags: [靶场,writeup]
 ---
 
 # DVWA Brute Force(low)

@@ -13,7 +13,8 @@
     "title": "XSS",
     "date": "2026-07-22",
     "tags": [
-      "漏洞"
+      "漏洞",
+      "DVWA"
     ],
     "excerpt": "XSS 完整渗透测试流程 XSS（CrossSite Scripting，跨站脚本攻击）是指攻击者将恶意脚本注入到网页中…"
   },
@@ -22,7 +23,8 @@
     "title": "DVWA Brute Force",
     "date": "2026-07-15",
     "tags": [
-      "靶场"
+      "靶场",
+      "writeup"
     ],
     "excerpt": "DVWA Brute Force(low) 通过burpsuite内嵌浏览器打开dvwa靶场，开启拦截。 随机输入账号密…"
   },
@@ -37,7 +39,7 @@
   },
   {
     "file": "Kali Linux虚拟机下载与安装.md",
-    "title": "Linux",
+    "title": "Kali Linux虚拟机下载安装和汉化",
     "date": "2026-07-15",
     "tags": [
       "虚拟机",
@@ -50,7 +52,8 @@
     "title": "Linux",
     "date": "2026-07-15",
     "tags": [
-      "cmd"
+      "cmd",
+      "系统"
     ],
     "excerpt": "Linux 命令大全Linux 命令大全 | 菜鸟教程 关机命令 shutdown 会给系统计划一个时间关机。它可以被用…"
   },
@@ -98,7 +101,8 @@
     "title": "搭建DVWA靶场",
     "date": "2026-07-15",
     "tags": [
-      "靶场，phpstudy"
+      "靶场",
+      "phpstudy"
     ],
     "excerpt": "搭建DVWA靶场 Windows版 1. 去 phpstudy 官网（xp.cn）下载 phpstudy_pro，安装 …"
   },

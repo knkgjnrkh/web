@@ -1,5 +1,5 @@
 ---
-title: Linux
+title: Kali Linux虚拟机下载安装和汉化
 date: 2026-07-15
 tags: [虚拟机,kali]
 ---
