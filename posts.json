@@ -1,5 +1,19 @@
 [
   {
+    "file": "Cobalt Strike安装.md",
+    "title": "Cobalt Strike安装",
+    "date": "2026-07-22",
+    "tags": [],
+    "excerpt": "Cobalt Strike本地部署 1、下载压缩包 https://github.com/CobaltStrike 2、…"
+  },
+  {
+    "file": "XSS.md",
+    "title": "XSS",
+    "date": "2026-07-22",
+    "tags": [],
+    "excerpt": "XSS 完整渗透测试流程 XSS（CrossSite Scripting，跨站脚本攻击）是指攻击者将恶意脚本注入到网页中…"
+  },
+  {
     "file": "DVWA Brute Force.md",
     "title": "DVWA Brute Force",
     "date": "2026-07-15",
@@ -31,7 +45,9 @@
     "file": "SQL注入.md",
     "title": "SQL注入",
     "date": "2026-07-15",
-    "tags": [],
+    "tags": [
+      "sql注入，DVWA"
+    ],
     "excerpt": "SQL 注入完整渗透测试流程 SQL 注入（SQL Injection）是一种常见的网络攻击手段，攻击者通过在输入字段或…"
   },
   {

