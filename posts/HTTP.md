@@ -1,7 +1,7 @@
 ---
 title: HTTP
 date: 2026-07-15
-tags: []
+tags: [web协议]
 ---
 
 # HTTP
@@ -128,8 +128,6 @@ HTTP/1.0 200 OK
 Content-type: text/html
 Set-Cookie: yummy_cookie=choco
 Set-Cookie: tasty_cookie=strawberry
-
-[页面内容]
 ```
 
 现在，对该服务器发起的每一次新请求，浏览器都会将之前保存的 Cookie 信息通过 [`Cookie`](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Reference/Headers/Cookie) 请求头部再发送给服务器。

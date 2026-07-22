@@ -1,7 +1,7 @@
 ---
 title: 搭建sqli-labs靶场(win)
 date: 2026-07-15
-tags: [sqli]
+tags: [sqli,靶场]
 ---
 
 # 搭建sqli-labs靶场(win)

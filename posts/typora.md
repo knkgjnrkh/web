@@ -1,7 +1,7 @@
 ---
 title: Typora
 date: 2026-07-15
-tags: []
+tags: [Markdown,破解]
 ---
 
 # 激活正版Typora

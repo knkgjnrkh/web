@@ -1,7 +1,7 @@
 ---
 title: VMware Pro安装
 date: 2026-07-15
-tags: []
+tags: [虚拟机]
 ---
 
 # VMware Pro下载与安装

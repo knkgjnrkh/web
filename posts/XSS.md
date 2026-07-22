@@ -1,7 +1,7 @@
 ---
 title: XSS
 date: 2026-07-22
-tags: []
+tags: [漏洞]
 ---
 
 # XSS 完整渗透测试流程

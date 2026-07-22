@@ -1,7 +1,7 @@
 ---
 title: Linux
 date: 2026-07-15
-tags: []
+tags: [cmd]
 ---
 
 # Linux

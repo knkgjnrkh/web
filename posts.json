@@ -3,42 +3,55 @@
     "file": "Cobalt Strike安装.md",
     "title": "Cobalt Strike安装",
     "date": "2026-07-22",
-    "tags": [],
+    "tags": [
+      "工具"
+    ],
     "excerpt": "Cobalt Strike本地部署 1、下载压缩包 https://github.com/CobaltStrike 2、…"
   },
   {
     "file": "XSS.md",
     "title": "XSS",
     "date": "2026-07-22",
-    "tags": [],
+    "tags": [
+      "漏洞"
+    ],
     "excerpt": "XSS 完整渗透测试流程 XSS（CrossSite Scripting，跨站脚本攻击）是指攻击者将恶意脚本注入到网页中…"
   },
   {
     "file": "DVWA Brute Force.md",
     "title": "DVWA Brute Force",
     "date": "2026-07-15",
-    "tags": [],
+    "tags": [
+      "靶场"
+    ],
     "excerpt": "DVWA Brute Force(low) 通过burpsuite内嵌浏览器打开dvwa靶场，开启拦截。 随机输入账号密…"
   },
   {
     "file": "HTTP.md",
     "title": "HTTP",
     "date": "2026-07-15",
-    "tags": [],
+    "tags": [
+      "web协议"
+    ],
     "excerpt": "HTTP [!IMPORTANT] 学习资料HTTP 概述 HTTP | MDN [!TIP] 实用资料HTTP 教程 …"
   },
   {
     "file": "Kali Linux虚拟机下载与安装.md",
-    "title": "Kali Linux虚拟机下载与安装",
+    "title": "Linux",
     "date": "2026-07-15",
-    "tags": [],
+    "tags": [
+      "虚拟机",
+      "kali"
+    ],
     "excerpt": "Kali Linux虚拟机下载安装和汉化 1、下载 打开官网Kali Linux | Penetration Testi…"
   },
   {
     "file": "Linux.md",
     "title": "Linux",
     "date": "2026-07-15",
-    "tags": [],
+    "tags": [
+      "cmd"
+    ],
     "excerpt": "Linux 命令大全Linux 命令大全 | 菜鸟教程 关机命令 shutdown 会给系统计划一个时间关机。它可以被用…"
   },
   {
@@ -46,7 +59,8 @@
     "title": "SQL注入",
     "date": "2026-07-15",
     "tags": [
-      "sql注入，DVWA"
+      "sql注入",
+      "DVWA"
     ],
     "excerpt": "SQL 注入完整渗透测试流程 SQL 注入（SQL Injection）是一种常见的网络攻击手段，攻击者通过在输入字段或…"
   },
@@ -54,14 +68,19 @@
     "file": "Typora.md",
     "title": "Typora",
     "date": "2026-07-15",
-    "tags": [],
+    "tags": [
+      "Markdown",
+      "破解"
+    ],
     "excerpt": "激活正版Typora [!CAUTION] 该方法仅适用于1.10以下版本 1、下载正版Typora 打开Typora官…"
   },
   {
     "file": "VMware Pro安装.md",
     "title": "VMware Pro安装",
     "date": "2026-07-15",
-    "tags": [],
+    "tags": [
+      "虚拟机"
+    ],
     "excerpt": "VMware Pro下载与安装 打开官网链接：Fusion and Workstation | VMware 点击dow…"
   },
   {
@@ -78,7 +97,9 @@
     "file": "搭建DVWA靶场.md",
     "title": "搭建DVWA靶场",
     "date": "2026-07-15",
-    "tags": [],
+    "tags": [
+      "靶场，phpstudy"
+    ],
     "excerpt": "搭建DVWA靶场 Windows版 1. 去 phpstudy 官网（xp.cn）下载 phpstudy_pro，安装 …"
   },
   {
@@ -86,7 +107,8 @@
     "title": "搭建sqli-labs靶场(win)",
     "date": "2026-07-15",
     "tags": [
-      "sqli"
+      "sqli",
+      "靶场"
     ],
     "excerpt": "搭建sqlilabs靶场(win) 1、安装好phpstudy 省略。详见文章搭建DVWA靶场 2、下载 在..\\php…"
   }

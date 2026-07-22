@@ -1,7 +1,7 @@
 ---
 title: Cobalt Strike安装
 date: 2026-07-22
-tags: []
+tags: [工具]
 ---
 
 # Cobalt Strike本地部署

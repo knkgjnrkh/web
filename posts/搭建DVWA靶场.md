@@ -1,7 +1,7 @@
 ---
 title: 搭建DVWA靶场
 date: 2026-07-15
-tags: []
+tags: [靶场，phpstudy]
 ---
 
 # 搭建DVWA靶场
