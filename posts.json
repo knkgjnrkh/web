@@ -1,5 +1,12 @@
 [
   {
+    "file": "CTFHub WriteUp.md",
+    "title": "CTFHub WriteUp",
+    "date": "2026-07-28",
+    "tags": [],
+    "excerpt": "CTFHub WriteUp(web) RCE 1、eval执行 打开靶场，eval()函数将传入的cmd参数当作php…"
+  },
+  {
     "file": "Cobalt Strike安装.md",
     "title": "Cobalt Strike安装",
     "date": "2026-07-22",
@@ -19,14 +26,14 @@
     "excerpt": "XSS 完整渗透测试流程 XSS（CrossSite Scripting，跨站脚本攻击）是指攻击者将恶意脚本注入到网页中…"
   },
   {
-    "file": "DVWA Brute Force.md",
-    "title": "DVWA Brute Force",
+    "file": "DVWA WriteUp.md",
+    "title": "DVWA WriteUp",
     "date": "2026-07-15",
     "tags": [
       "靶场",
       "writeup"
     ],
-    "excerpt": "DVWA Brute Force(low) 通过burpsuite内嵌浏览器打开dvwa靶场，开启拦截。 随机输入账号密…"
+    "excerpt": "DVWA WriteUp Brute Force 通过burpsuite内嵌浏览器打开dvwa靶场，开启拦截。 随机输入…"
   },
   {
     "file": "HTTP.md",
@@ -102,7 +109,8 @@
     "date": "2026-07-15",
     "tags": [
       "靶场",
-      "phpstudy"
+      "phpstudy",
+      "docker"
     ],
     "excerpt": "搭建DVWA靶场 Windows版 1. 去 phpstudy 官网（xp.cn）下载 phpstudy_pro，安装 …"
   },

@@ -36,7 +36,7 @@ tags: [sqli,靶场]
 
 在phpstudy新建数据库，用户名密码设成前一步骤中修改好的账密
 
-![image-20260714142728052](../assets/%E6%90%AD%E5%BB%BAsqli-labs%E9%9D%B6%E5%9C%BA(win)/image-20260714142728052.png)
+![image-20260714142728052](../assets/%E6%90%AD%E5%BB%BAsqli-labs%E9%9D%B6%E5%9C%BA/image-20260714142728052.png)
 
 #### 5、创建网站
 

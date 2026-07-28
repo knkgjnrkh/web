@@ -1,7 +1,7 @@
 ---
 title: 搭建DVWA靶场
 date: 2026-07-15
-tags: [靶场,phpstudy]
+tags: [靶场,phpstudy,docker]
 ---
 
 # 搭建DVWA靶场
@@ -83,8 +83,6 @@ sudo docker --version
 #### 2、免 sudo 用 docker
 
 把当前用户加进 docker 组，以后不用每条命令都打 sudo：
-
-
 
 ```bash
 sudo usermod -aG docker $USER

@@ -22,7 +22,7 @@ vmware已经被broadcom收购，需要注册一个博通账号，最好用国外
 
 拉到最下，选择VMware Workstation Pro。
 
-![dda5b31a-af37-4e62-988c-334da15a211e](C:\Users\lj\Documents\xwechat_files\wxid_wt686pdb3hl222_eb2a\temp\InputTemp\dda5b31a-af37-4e62-988c-334da15a211e.png)
+
 
 选择需要的版本(这里以17.6版本为例)
 
