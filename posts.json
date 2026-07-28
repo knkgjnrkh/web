@@ -3,7 +3,9 @@
     "file": "CTFHub WriteUp.md",
     "title": "CTFHub WriteUp",
     "date": "2026-07-28",
-    "tags": [],
+    "tags": [
+      "writeup"
+    ],
     "excerpt": "CTFHub WriteUp(web) RCE 1、eval执行 打开靶场，eval()函数将传入的cmd参数当作php…"
   },
   {
