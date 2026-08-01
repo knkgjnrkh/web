@@ -78,7 +78,7 @@
       a.textContent = h.textContent;
       a.addEventListener("click", function (e) {
         e.preventDefault();
-        document.getElementById(id).scrollIntoView({ behavior: "smooth" });
+        scrollToHeading(document.getElementById(id));
         history.replaceState(null, "", "#" + id);
       });
       li.appendChild(a);
@@ -94,20 +94,58 @@
     });
     tocEl.appendChild(list);
     setupTOCHighlight(headings);
+    scrollToInitialHash();
+  }
+
+  function getHeaderOffset() {
+    const header = document.querySelector(".header");
+    return (header ? header.offsetHeight : 0) + 18;
+  }
+
+  function scrollToHeading(target) {
+    if (!target) return;
+    const top = target.getBoundingClientRect().top + window.scrollY - getHeaderOffset();
+    window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+  }
+
+  function scrollToInitialHash() {
+    if (!location.hash) return;
+    const target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+    if (!target) return;
+    window.setTimeout(function () {
+      scrollToHeading(target);
+    }, 0);
   }
 
   // 滚动时高亮当前所在章节
   function setupTOCHighlight(headings) {
+    const tocEl = document.getElementById("toc");
+    const contentEl = document.getElementById("content");
     const links = document.querySelectorAll(".toc-list a");
+
+    function updateProgress() {
+      const scrollTop = window.scrollY;
+      const contentTop = contentEl.getBoundingClientRect().top + scrollTop;
+      const contentBottom = contentTop + contentEl.offsetHeight;
+      const start = contentTop - getHeaderOffset();
+      const end = contentBottom - window.innerHeight + getHeaderOffset();
+      const raw = end <= start ? (scrollTop >= start ? 1 : 0) : (scrollTop - start) / (end - start);
+      const progress = Math.min(1, Math.max(0, raw));
+      tocEl.style.setProperty("--toc-progress", progress.toFixed(4));
+    }
+
     function onScroll() {
       let current = 0;
+      const threshold = getHeaderOffset() + 8;
       headings.forEach(function (h, idx) {
-        if (h.getBoundingClientRect().top <= 120) current = idx;
+        if (h.getBoundingClientRect().top <= threshold) current = idx;
       });
       links.forEach(function (a, idx) {
         a.classList.toggle("active", idx === current);
       });
+      updateProgress();
     }
+    window.addEventListener("resize", onScroll);
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
   }
