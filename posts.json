@@ -6,7 +6,7 @@
     "tags": [
       "writeup"
     ],
-    "excerpt": "CTFHub WriteUp(web) RCE 1、eval执行 打开靶场，eval()函数将传入的cmd参数当作php…"
+    "excerpt": "CTFHub WriteUp(web) 信息泄露 1、目录遍历 根据规律构建python脚本 2、PHPINFO 点开p…"
   },
   {
     "file": "Cobalt Strike安装.md",
