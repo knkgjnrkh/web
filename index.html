@@ -4,6 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>nlklmll的博客</title>
+  <script>
+    (function () {
+      try {
+        var savedTheme = localStorage.getItem("theme");
+        var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.dataset.theme = savedTheme || (prefersDark ? "dark" : "light");
+      } catch (e) {}
+    })();
+  </script>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,7 +21,12 @@
   <header class="header">
     <div class="container">
       <a class="header-name" href="index.html">nlklmll</a>
-      <span class="header-tag">个人博客</span>
+      <div class="header-actions">
+        <span class="header-tag">个人博客</span>
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="切换夜间模式" title="切换夜间模式">
+          <span class="theme-toggle-icon" aria-hidden="true">☾</span>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -57,6 +71,7 @@
   <!-- ======== 回到顶部按钮 ======== -->
   <button id="back-to-top" class="back-to-top" aria-label="回到顶部" title="回到顶部">↑</button>
 
+  <script src="theme.js"></script>
   <script>
     (function () {
       "use strict";

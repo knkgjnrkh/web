@@ -46,7 +46,7 @@
 
   // 给正文里的标题加 id，并生成左侧目录（TOC）
   function buildTOC(contentEl) {
-    const headings = contentEl.querySelectorAll("h1, h2, h3, h4");
+    const headings = contentEl.querySelectorAll("h1, h2, h3, h4, h5, h6");
     const tocEl = document.getElementById("toc");
     if (!headings.length) {
       document.getElementById("toc-sidebar").style.display = "none";
@@ -56,11 +56,23 @@
     }
     const list = document.createElement("ul");
     list.className = "toc-list";
+    const stack = [{ level: 0, childList: list }];
+
+    function childListFor(item) {
+      if (!item.childList) {
+        item.childList = document.createElement("ul");
+        item.childList.className = "toc-list toc-sublist";
+        item.li.appendChild(item.childList);
+      }
+      return item.childList;
+    }
+
     headings.forEach(function (h, idx) {
       const id = "h-" + idx;
+      const level = Number(h.tagName.slice(1));
       h.id = id;
       const li = document.createElement("li");
-      li.className = "toc-item toc-" + h.tagName.toLowerCase();
+      li.className = "toc-item toc-h" + level;
       const a = document.createElement("a");
       a.href = "#" + id;
       a.textContent = h.textContent;
@@ -70,7 +82,15 @@
         history.replaceState(null, "", "#" + id);
       });
       li.appendChild(a);
-      list.appendChild(li);
+
+      while (stack.length > 1 && stack[stack.length - 1].level >= level) {
+        stack.pop();
+      }
+
+      const parent = stack[stack.length - 1];
+      const parentList = parent.level === 0 ? parent.childList : childListFor(parent);
+      parentList.appendChild(li);
+      stack.push({ level: level, li: li, childList: null });
     });
     tocEl.appendChild(list);
     setupTOCHighlight(headings);
