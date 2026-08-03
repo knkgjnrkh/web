@@ -164,6 +164,8 @@ cat查看，有一个txt文件，提示有flag，加到url打开
 
 #### 4、Git泄露
 
+当前大量开发人员使用git进行版本控制，对站点自动部署。如果配置不当,可能会将.git文件夹直接部署到线上环境。这就引起了git泄露漏洞。
+
 ##### Log
 
 需要使用BugScanTeam的GitHack
@@ -255,6 +257,8 @@ git diff 97c901fa9fb925c5d94279309407e2e34c93841c
 
 #### 5、SVN泄露
 
+当开发人员使用 SVN 进行版本控制，对站点自动部署。如果配置不当,可能会将.svn文件夹直接部署到线上环境。这就引起了 SVN 泄露漏洞。
+
 需要使用SVN泄露的漏洞利用工具dvcs-ripper，可以直接在ctfhub搜到下载
 
 https://github.com/kost/dvcs-ripper
@@ -272,7 +276,7 @@ sudo apt-get install perl libio-socket-ssl-perl libdbd-sqlite3-perl libclass-dbi
 将泄露的文件下载到本地目录中
 
 ```
-./rip-svn.pl -u http://example.com:10800/.svn
+./rip-svn.pl -u http://example.com:port/.svn
 ```
 
 ![image-20260801221419859](../assets/CTFHub%20WriteUp/image-20260801221419859.png)
@@ -299,6 +303,275 @@ grep -rn "ctfhub"
 ```
 
 ![image-20260801221445516](../assets/CTFHub%20WriteUp/image-20260801221445516.png)
+
+
+
+---
+
+
+
+#### 6、HG泄露
+
+当开发人员使用 Mercurial 进行版本控制，对站点自动部署。如果配置不当,可能会将.hg 文件夹直接部署到线上环境。这就引起了 hg 泄露漏洞。
+
+dirsearch扫出`.hg`目录
+
+用工具dvcs-ripper将泄露的文件下载到本地目录中
+
+```
+./rip-hg.pl -u http://example.com:port/.hg
+```
+
+![image-20260802112103691](../assets/CTFHub%20WriteUp/image-20260802112103691.png)
+
+显示404报错，用命令`tree .hg`，列出刚刚下载的网站目录
+
+![image-20260802112413809](../assets/CTFHub%20WriteUp/image-20260802112413809.png)
+
+查看`last-message.txt`，内容`add flag`，提示旧版本
+
+直接查找`flag`
+
+```
+grep -a -r flag
+```
+
+![image-20260802113806653](../assets/CTFHub%20WriteUp/image-20260802113806653.png)
+
+尝试访问`/flag_2393610704.txt`
+
+```
+curl http://challenge-205d2fc13c467b80.sandbox.ctfhub.com:10800/flag_2393610704.txt
+```
+
+![image-20260802113906626](../assets/CTFHub%20WriteUp/image-20260802113906626.png)
+
+
+
+---
+
+
+
+### 文件上传
+
+---
+
+
+
+#### 1、无验证
+
+打开是个上传文件的网页
+
+上传一句话木马用于远程连接，新建一个.php文件，内容如下
+
+```
+<?php @eval($_POST['123']);?>
+```
+
+再将文件上传
+
+提示上传成功
+
+![image-20260802193907333](../assets/CTFHub%20WriteUp/image-20260802193907333.png)
+
+提示文件路径`upload/123.php`
+
+![image-20260802194002005](../assets/CTFHub%20WriteUp/image-20260802194002005.png)
+
+打开蚁剑连接
+
+```
+http://challenge-a2c63090c713408d.sandbox.ctfhub.com:10800/upload/123.php
+```
+
+密码就是木马里设置的`123`
+
+![image-20260802194051733](../assets/CTFHub%20WriteUp/image-20260802194051733.png)
+
+测试成功后添加，双击打开
+
+可以访问服务器文件，逐级往上翻找
+
+![image-20260802194515824](../assets/CTFHub%20WriteUp/image-20260802194515824.png)
+
+
+
+---
+
+
+
+#### 2、前端验证
+
+上传.php格式木马时提示不允许
+
+![image-20260802195151191](../assets/CTFHub%20WriteUp/image-20260802195151191.png)
+
+右键->检查->源代码，找到JavaScript部分
+
+![image-20260802195450136](../assets/CTFHub%20WriteUp/image-20260802195450136.png)
+
+前端校验只允许`".jpg",".png",".gif"`格式文件上传
+
+将木马后缀修改成允许的后缀再上传，提示上传成功
+
+但是图像文件会让靶机无法读取php代码，所以需要bp改包
+
+用burp suite抓包发到重放器repeater
+
+将头部Content-Disposition字段的filename改成123.php
+
+![image-20260802200547036](../assets/CTFHub%20WriteUp/image-20260802200547036.png)
+
+再发送，返回上传成功
+
+打开蚁剑，地址栏还是填`upload/123.php`
+
+![image-20260802200346078](../assets/CTFHub%20WriteUp/image-20260802200346078.png)
+
+
+
+---
+
+
+
+#### 3、.htaccess
+
+.htaccess文件是用于apache服务器下的控制文件访问的配置文件，因此Nginx下是不会生效的
+
+.htaccess可以帮我们实现：网页301重定向、自定义404错误页面、改变文件扩展名、允许/阻止特定的用户或者目录的访问、禁止目录列表、配置默认文档、文件的跳转等功能。
+
+访问靶机，尝试上传.php一句话木马，提示文件类型不匹配
+
+![image-20260802201055070](../assets/CTFHub%20WriteUp/image-20260802201055070.png)
+
+查看源码，提示我们后端校验禁止上传php格式，尝试htaccess改配置
+
+![image-20260802210114515](../assets/CTFHub%20WriteUp/image-20260802210114515.png)
+
+创建一个文本，写入
+
+```
+AddType application/x-httpd-php .png
+```
+
+重命文件名为`.htaccess`，将其上传
+
+成功后就可以上传.png后缀的一句话木马文件，而且将`.png`文件当作php代码执行，意味着可以运行一句话木马
+
+然后蚁剑连接
+
+
+
+---
+
+
+
+#### 4、MIME绕过
+
+浏览器通常使用MIME类型（而不是文件扩展名）来确定如何处理URL，因此Web服务器在响应头中添加正确的MIME类型非常重要。如果配置不正确，浏览器可能会曲解文件内容，网站将无法正常工作，并且下载的文件也会被错误处理。
+
+直接上传`.php`后缀的一句话木马，提示文件类型不对
+
+bp抓包，将请求体中的**Content-Type**字段改成
+
+```
+image/png
+```
+
+![image-20260802211739172](../assets/CTFHub%20WriteUp/image-20260802211739172.png)
+
+提示上传成功，路径upload/123.php
+
+再用蚁剑连接即可
+
+
+
+---
+
+
+
+#### 5、00截断
+
+%00，0x00，/00都属于00截断，利用的是服务器的解析漏洞（ascii中0表示字符串结束），所以读取字符串到00就会停止，认为已经结束。
+
+使用%00截断有两个条件
+
+php版本小于5.3.4
+magic_quotes_gpc为off状态
+
+直接传`.php`木马提示文件类型不匹配，查看源码
+
+![image-20260802214709785](../assets/CTFHub%20WriteUp/image-20260802214709785.png)
+
+提示白名单"jpg", "png", "gif"格式可以上传
+
+将木马文件后缀改成`.php.jpg`
+
+上传pb抓包
+
+在header路径使用00截断
+
+![image-20260802214314264](../assets/CTFHub%20WriteUp/image-20260802214314264.png)
+
+加上123.php%00
+
+![image-20260802214402859](../assets/CTFHub%20WriteUp/image-20260802214402859.png)
+
+发送，返回上传成功
+
+蚁剑连接
+
+
+
+---
+
+
+
+#### 6、双写后缀
+
+直接上传.php木马，提示上传成功，但路径显示文件没有后缀
+
+![image-20260802215143620](../assets/CTFHub%20WriteUp/image-20260802215143620.png)
+
+查看网页源码，提示网站黑名单，包括`.php`，`.htaccess`后缀，上传后会将后缀中的敏感字删除
+
+bp改包，将文件名改成123.pphphp
+
+![image-20260802215758376](../assets/CTFHub%20WriteUp/image-20260802215758376.png)
+
+蚁剑连接123.php
+
+
+
+---
+
+
+
+#### 7、文件头检查
+
+直接传`.php`木马提示只允许上传 jpeg jpg png gif 类型的文件
+
+![image-20260802222308764](../assets/CTFHub%20WriteUp/image-20260802222308764.png)
+
+添加`GIF89a`到木马文件头部
+
+![image-20260802222741583](../assets/CTFHub%20WriteUp/image-20260802222741583.png)
+
+如果不添加gif文件头，直接上传，提示文件错误
+
+![image-20260802223640653](../assets/CTFHub%20WriteUp/image-20260802223640653.png)
+
+方法一(MIME)
+
+上传`123.php`，bp改包将**Content-Type**改成`image/gif`，发送，成功，连接蚁剑
+
+![image-20260802223205495](../assets/CTFHub%20WriteUp/image-20260802223205495.png)
+
+方法二
+
+上传`.gif`文件，再改包将**filename**的后缀改成`.php`
+
+![image-20260802223819105](../assets/CTFHub%20WriteUp/image-20260802223819105.png)
 
 
 
